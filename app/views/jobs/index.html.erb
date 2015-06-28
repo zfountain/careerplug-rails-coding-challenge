@@ -1,0 +1,5 @@
+<h1>All jobs</h1>
+<% @jobs.each do |job| %>
+  <h4><%= job.name %></h4>
+  <p><%= job.description.html_safe %></p>
+<% end %>

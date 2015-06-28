@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Post a new job</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= semantic_form_for @job do |f| %>
+      <%= f.inputs do %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :status, as: :select, collection: Job.statuses.keys.map{ |et| [et.humanize, et] }, include_blank: false %>
+        <%= f.input :employment_type, as: :select, collection: Job.employment_types.keys.map{ |et| [et.humanize, et] }, include_blank: false %>
+      <% end %>
+      <%= f.actions do %>
+        <%= f.action :submit, button_html: { class: 'btn btn-action' } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
