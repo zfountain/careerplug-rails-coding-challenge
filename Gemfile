@@ -11,6 +11,12 @@ gem 'formtastic'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'formtastic-bootstrap'
 
+# Use sorcery for authentication
+gem 'sorcery'
+
+# Use Cancan for authorization
+gem 'cancan'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'

@@ -2,4 +2,5 @@
 <% @jobs.each do |job| %>
   <h4><%= job.name %></h4>
   <p><%= job.description.html_safe %></p>
+  <p>User id: <%= job.user_id %></p>
 <% end %>
