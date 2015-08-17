@@ -9,4 +9,19 @@
   <h4><%= job.name %></h4>
   <p><%= job.description.html_safe %></p>
   <p>User id: <%= job.user_id %></p>
+
+  <h5>Comments</h5>
+  <div id="comments_<%= job.id %>">
+    <%= render :partial => job.comments %>
+  </div>
+  <p class="show_comment">New comment</p>
+  <div class="form hide_form">
+  <%= form_for([job, job.comments.build], :remote => true) do |f| %>
+    <p><%= f.text_area :content, :class => 'comment_input' %></p>
+    <p><%= f.submit "Add comment" %></p>
+  <% end %>
+  </div>
 <% end %>
+
+
+

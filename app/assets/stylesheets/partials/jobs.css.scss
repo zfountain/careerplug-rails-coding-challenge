@@ -8,3 +8,10 @@ form.formtastic {
     color: #fff;
   }
 }
+.hide_form {
+  display: none;
+}
+.show_comment {
+  cursor: pointer;
+  font-weight: bold;
+}

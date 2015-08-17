@@ -1,3 +1,17 @@
 <h1>Jobs#show</h1>
 <p>Find me in app/views/jobs/show.html.erb</p>
 <%= @job.name %>
+
+<h2>Comments</h2>
+<%= render @job.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= form_for([@job, @job.comments.build]) do |f| %>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -17,6 +17,7 @@ class Job < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
 
   belongs_to :user
+  has_many :comments
   
   enum status: [:active, :inactive]
   enum employment_type: [:full_time, :part_time]
