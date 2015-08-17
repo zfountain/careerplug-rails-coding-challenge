@@ -13,7 +13,6 @@
 
 class Job < ActiveRecord::Base
 
-
   # Iclude SanitizeHelper to strip tags from form submissions
   include ActionView::Helpers::SanitizeHelper
 
@@ -24,8 +23,15 @@ class Job < ActiveRecord::Base
 
   validates_presence_of :name, :description, :status, :employment_type
 
+  #Sanitize each field before saving to the database
   before_save do |job|
     job.name = strip_tags(job.name)
     job.description = strip_tags(job.description)
   end
+
+  # Returns the jobs whose names contain one or more words from query
+  def self.search(query)
+    where("name like ?", "%#{query}%")
+  end
+
 end

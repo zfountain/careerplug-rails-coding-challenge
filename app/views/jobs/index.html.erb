@@ -1,4 +1,10 @@
-<h1>All jobs</h1>
+<%if @jobs.count != @user_jobs.count %>
+  <h1><%= @query_title %> Job titles matching your search: <%= @jobs.count %></h1>
+  <p><%= link_to "Clear results", jobs_path %></p>
+<% else %>
+  <h1>All jobs</h1>
+<% end %>
+
 <% @jobs.each do |job| %>
   <h4><%= job.name %></h4>
   <p><%= job.description.html_safe %></p>

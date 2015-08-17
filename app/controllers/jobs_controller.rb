@@ -1,8 +1,14 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   def index
-    # Show jobs created by the signed-in user
-    @jobs = current_user.jobs
+    if params[:search]
+      # Show search results for jobs created by the signed-in user
+      @jobs = current_user.jobs.search(params[:search]).order("created_at DESC")
+    else
+      # Show all jobs created by the signed-in user
+      @jobs = current_user.jobs
+    end
+      @user_jobs = current_user.jobs
   end
 
   def show
@@ -23,6 +29,10 @@ class JobsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def search_params
+    @query_title = params[:search]
   end
 
   private
